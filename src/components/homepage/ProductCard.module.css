@@ -1,0 +1,16 @@
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 5px;
+  color: black;
+  align-items: center;
+  border-radius: 4px;
+}
+
+img {
+  height: 200px;
+  width:  200px;
+  object-fit: contain;
+}

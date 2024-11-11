@@ -1,7 +1,7 @@
 export function Shopping() {
   return (
     <>
-      <div>Shopping page</div>
+      <h2>Shopping page</h2>
     </>
   );
 }

@@ -1,5 +1,13 @@
+nav {
+  width: 100vw;
+}
+
+
 ul {
+  padding: 20px;
+  margin: 0;
   list-style-type: none;
   display: flex;
   gap: 20px;
+  justify-content: end;
 }

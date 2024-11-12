@@ -5,11 +5,12 @@ import { NavBar } from "./components/NavBar.jsx";
 import { HomePage } from "./components/homepage/HomePage.jsx";
 import { useEffect, useState } from "react";
 import { Popup } from "./components/Popup.jsx";
+import styles from "./App.module.css";
 
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
-  const [popup, setPopup] = useState([]);
+  const [popups, setPopups] = useState([]);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -33,13 +34,14 @@ function App() {
 
     const newPopup = { id: Date.now(), product: product };
 
-    setPopup((prevState) => [...prevState, newPopup]);
+    setPopups((prevState) => [...prevState, newPopup]);
 
     setTimeout(() => {
-      setPopup((prevState) =>
+      setPopups((prevState) =>
         prevState.filter((popup) => popup.id !== newPopup.id),
       );
     }, 2000);
+    console.log(popups);
   }
 
   function increment(productId) {
@@ -47,6 +49,7 @@ function App() {
       prev.map((p) => (p.id === productId ? { ...p, count: p.count + 1 } : p)),
     );
   }
+
   function decrement(productId) {
     setCart((prev) =>
       prev
@@ -76,9 +79,14 @@ function App() {
           }
         />
       </Routes>
-      {popup.map((popup) => (
-        <Popup key={popup.id} product={popup.product} />
-      ))}
+      <div className={styles.popupContainer}>
+        {popups.map((popup, index) => (
+          <div key={popup.id}>
+            <Popup product={popup.product} />
+            {index < popups.length - 1 && <hr />}
+          </div>
+        ))}
+      </div>
     </>
   );
 }

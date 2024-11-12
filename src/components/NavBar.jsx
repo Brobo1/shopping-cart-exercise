@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./NavBar.module.css";
-import { string } from "prop-types";
+import { number } from "prop-types";
 
 export function NavBar(props) {
   return (
@@ -20,5 +20,5 @@ export function NavBar(props) {
 }
 
 NavBar.propTypes = {
-  count: string,
+  count: number,
 };

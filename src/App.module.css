@@ -1,0 +1,13 @@
+.popupContainer {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 50%;
+  top: 30px;
+  transform: translate(-50%, 0);
+  background-color: #424242;
+  color: white;
+  clip-path: inset(0 0 0 0 round 10px);
+  overflow: auto;
+}

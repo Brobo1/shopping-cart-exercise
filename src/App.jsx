@@ -9,7 +9,7 @@ import { Popup } from "./components/Popup.jsx";
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
-  const [popup, setPopup] = useState(false);
+  const [popup, setPopup] = useState([]);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -17,13 +17,20 @@ function App() {
       .then((res) => setProducts(res));
   }, []);
 
+  let timeout;
   function handleAddCart(product) {
-    setCart((prevState) => [...prevState, product]);
-    setPopup(true);
+    setCart((prevState) => [product, ...prevState]);
+    clearTimeout(timeout);
+
+    const newPopup = { id: Date.now(), product: product };
+
+    setPopup((prevState) => [...prevState, newPopup]);
 
     setTimeout(() => {
-      setPopup(false);
-    }, 1000);
+      setPopup((prevState) =>
+        prevState.filter((popup) => popup.id !== newPopup.id),
+      );
+    }, 2000);
   }
 
   return (
@@ -36,7 +43,9 @@ function App() {
         />
         <Route path={"/shopping"} element={<Shopping cart={cart} />} />
       </Routes>
-      {popup ? <Popup /> : null}
+      {popup.map((popup) => (
+        <Popup key={popup.id} product={popup.product} />
+      ))}
     </>
   );
 }

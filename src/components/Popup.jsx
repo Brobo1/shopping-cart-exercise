@@ -1,11 +1,13 @@
-import { func } from "prop-types";
+import { array, func, object } from "prop-types";
 import styles from "./Popup.module.css";
 
 export function Popup(props) {
+  console.log();
   return (
     <>
       <div className={styles.popupContainer}>
-        <h1>aaaa</h1>
+        <p className={styles.popupProductText}>{props.product.title} </p>
+        <p className={styles.popupAddedText}>added to cart</p>
       </div>
     </>
   );
@@ -13,4 +15,6 @@ export function Popup(props) {
 
 Popup.propTypes = {
   onClick: func,
+  cart: array,
+  product: object,
 };

@@ -12,19 +12,27 @@ export function Shopping(props) {
     return prev;
   }, {});
 
+  let totalPrice = 0;
+
   return (
     <>
       <h2>Shopping page</h2>
       <div className={styles.shoppingContainer}>
-        {Object.values(itemCount).map((item, index) => (
-          <CartItem
-            key={index}
-            title={item.title}
-            count={`x${item.count}`}
-            price={`$${item.price * item.count}`}
-            image={item.image}
-          />
-        ))}
+        {Object.values(itemCount).map((item, index) => {
+          totalPrice += item.price * item.count;
+          return (
+            <CartItem
+              key={index}
+              title={item.title}
+              count={`x${item.count}`}
+              price={`$${item.price * item.count}`}
+              image={item.image}
+            />
+          );
+        })}
+        <p className={styles.totalPrice}>
+          Total price: ${totalPrice.toFixed(2)}
+        </p>
       </div>
     </>
   );

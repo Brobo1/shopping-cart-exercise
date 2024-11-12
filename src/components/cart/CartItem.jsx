@@ -13,7 +13,9 @@ export function CartItem(props) {
         <div className={styles.infoContainer}>
           <div>{props.title}</div>
           <div className={styles.cartPrice}>
-            <div>{props.count}</div>
+            <div className={styles.cardCountContainer}>
+              <div>{props.count}</div>
+            </div>
             <div>{props.price}</div>
           </div>
         </div>

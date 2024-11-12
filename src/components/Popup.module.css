@@ -1,7 +1,40 @@
 .popupContainer {
   position: fixed;
   left: 50%;
-  top: 0;
+  top: 30px;
   transform: translate(-50%,0);
-  background-color: black;
+  background-color: #424242;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  animation-name: popup-drop;
+  animation-duration: 2500ms;
+
+}
+
+.popupAddedText, .popupProductText {
+  margin: 0;
+  font-size: 24px;
+}
+
+.popupAddedText {
+  font-weight: bold;
+}
+
+
+
+
+@keyframes popup-drop {
+  0% {
+    top: -50%;
+    opacity: 0;
+  }
+  10%, 70% {
+    top: 30px;
+    opacity: 1;
+  }
+  100% {
+    top: -50%;
+    opacity: 0;
+  }
 }

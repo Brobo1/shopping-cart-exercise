@@ -1,5 +1,6 @@
 import { ProductCard } from "./ProductCard.jsx";
 import styles from "./HomePage.module.css";
+import { array, func } from "prop-types";
 
 export function HomePage(props) {
   return (
@@ -8,6 +9,7 @@ export function HomePage(props) {
       <div className={styles.cardsContainer}>
         {props.products.map((product) => (
           <ProductCard
+            onClick={() => props.onClick(product)}
             key={product.id}
             title={product.title}
             image={product.image}
@@ -17,3 +19,9 @@ export function HomePage(props) {
     </>
   );
 }
+
+HomePage.propTypes = {
+  products: array,
+  handleAddCart: func,
+  onClick: func,
+};

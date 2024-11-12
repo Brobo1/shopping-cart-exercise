@@ -7,10 +7,27 @@
   color: black;
   align-items: center;
   border-radius: 4px;
+  gap: 20px;
 }
 
-img {
+.productTitle {
+  padding: 0;
+  margin: 0;
+}
+
+.productImage {
   height: 200px;
   width:  200px;
   object-fit: contain;
+}
+
+.cartImage {
+  height: 30px;
+}
+
+.cartButton {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 2px 20px;
 }

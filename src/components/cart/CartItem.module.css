@@ -1,0 +1,24 @@
+.cartItemContainer {
+  display: flex;
+  background-color: white;
+  color: black;
+  padding: 5px 20px;
+  border-radius: 3px;
+  gap: 20px;
+}
+
+.infoContainer {
+  width: 100%;
+  text-align: left;
+  font-size: 24px;
+}
+
+.cartPrice {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cartItemImage {
+  width: 50px;
+  object-fit: contain;
+}

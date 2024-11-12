@@ -21,7 +21,7 @@ export function Shopping(props) {
             key={index}
             title={item.title}
             count={`x${item.count}`}
-            price={`$${item.price}`}
+            price={`$${item.price * item.count}`}
             image={item.image}
           />
         ))}

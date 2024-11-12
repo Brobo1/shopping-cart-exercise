@@ -1,4 +1,4 @@
-import { array } from "prop-types";
+import { array, func } from "prop-types";
 import { CartItem } from "./CartItem.jsx";
 import styles from "./Shopping.module.css";
 
@@ -14,6 +14,8 @@ export function Shopping(props) {
 
   let totalPrice = 0;
 
+  function increment() {}
+
   return (
     <>
       <h2>Shopping page</h2>
@@ -27,6 +29,8 @@ export function Shopping(props) {
               count={`x${item.count}`}
               price={`$${item.price * item.count}`}
               image={item.image}
+              increment={increment}
+              decrement={props.decrement}
             />
           );
         })}
@@ -40,4 +44,6 @@ export function Shopping(props) {
 
 Shopping.propTypes = {
   cart: array,
+  increment: func,
+  decrement: func,
 };

@@ -18,10 +18,10 @@ export function CartItem(props) {
             <div className={styles.cardCountContainer}>
               <div>{props.count}</div>
               <div className={styles.countButtons}>
-                <button type={"button"} onClick={props.increment}>
+                <button type={"button"} onClick={props.decrement}>
                   <img src={remove ?? ""} alt="Remove" />
                 </button>
-                <button type={"button"} onClick={props.decrement}>
+                <button type={"button"} onClick={props.increment}>
                   <img src={add ?? ""} alt="Add button" />
                 </button>
               </div>

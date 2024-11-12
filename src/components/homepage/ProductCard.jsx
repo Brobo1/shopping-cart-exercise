@@ -17,7 +17,11 @@ export function ProductCard(props) {
           type={"button"}
           onClick={props.onClick}
         >
-          <img className={styles.cartImage} src={cartImage} alt="Cart image" />
+          <img
+            className={styles.cartImage}
+            src={cartImage ?? ""}
+            alt="Cart image"
+          />
         </button>
       </div>
     </>

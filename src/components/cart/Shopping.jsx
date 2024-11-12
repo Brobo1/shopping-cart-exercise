@@ -1,6 +1,7 @@
 import { array, func } from "prop-types";
 import { CartItem } from "./CartItem.jsx";
 import styles from "./Shopping.module.css";
+import { useEffect } from "react";
 
 export function Shopping(props) {
   const itemCount = props.cart.reduce((prev, curr) => {
@@ -14,7 +15,10 @@ export function Shopping(props) {
 
   let totalPrice = 0;
 
-  function increment() {}
+  function increment(product) {
+    itemCount[product].count += 1;
+    console.log(itemCount);
+  }
 
   return (
     <>
@@ -29,7 +33,7 @@ export function Shopping(props) {
               count={`x${item.count}`}
               price={`$${item.price * item.count}`}
               image={item.image}
-              increment={increment}
+              increment={() => increment(item.id)}
               decrement={props.decrement}
             />
           );

@@ -21,7 +21,15 @@ function App() {
   let timeout;
 
   function handleAddCart(product) {
-    setCart((prevState) => [product, ...prevState]);
+    setCart((prev) => {
+      const exists = prev.find((p) => p.id === product.id);
+      if (exists) {
+        return prev.map((p) =>
+          p.id === product.id ? { ...p, count: p.count + 1 } : p,
+        );
+      }
+      return [...prev, { ...product, count: 1 }];
+    });
     clearTimeout(timeout);
 
     const newPopup = { id: Date.now(), product: product };
@@ -35,8 +43,20 @@ function App() {
     }, 2000);
   }
 
-  function increment() {}
-  function decrement() {}
+  function increment(productId) {
+    setCart((prev) =>
+      prev.map((p) => (p.id === productId ? { ...p, count: p.count + 1 } : p)),
+    );
+  }
+  function decrement(productId) {
+    setCart((prev) =>
+      prev
+        .map((p) =>
+          p.id === productId && p.count > 0 ? { ...p, count: p.count - 1 } : p,
+        )
+        .filter((p) => p.count > 0),
+    );
+  }
 
   console.log(cart);
 
@@ -50,7 +70,9 @@ function App() {
         />
         <Route
           path={"/shopping"}
-          element={<Shopping cart={cart} increment={increment} />}
+          element={
+            <Shopping cart={cart} increment={increment} decrement={decrement} />
+          }
         />
       </Routes>
       {popup.map((popup) => (

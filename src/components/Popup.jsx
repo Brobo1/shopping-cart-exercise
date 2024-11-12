@@ -2,7 +2,6 @@ import { array, func, object } from "prop-types";
 import styles from "./Popup.module.css";
 
 export function Popup(props) {
-  console.log();
   return (
     <>
       <div className={styles.popupContainer}>

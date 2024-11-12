@@ -5,7 +5,6 @@ import { NavBar } from "./components/NavBar.jsx";
 import { HomePage } from "./components/homepage/HomePage.jsx";
 import { useEffect, useState } from "react";
 import { Popup } from "./components/Popup.jsx";
-import { func } from "prop-types";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -58,11 +57,13 @@ function App() {
     );
   }
 
-  console.log(cart);
+  function totalCount() {
+    return cart.reduce((acc, curr) => acc + curr.count, 0);
+  }
 
   return (
     <>
-      <NavBar />
+      <NavBar count={totalCount()} />
       <Routes>
         <Route
           path={"/"}
